@@ -1,1 +1,3 @@
-console.log("Hello, world!");
+import interpret from "./interpreter/interpreter";
+
+export default interpret;
