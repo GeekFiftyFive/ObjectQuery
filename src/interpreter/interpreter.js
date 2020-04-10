@@ -1,4 +1,10 @@
 import numericExpressionHelper from "../helpers/numericExpressionHelper";
+import stringExpressionHelper from "../helpers/stringExpressionHelper";
+
+const objectExpressionHandlers = {
+  "number" : numericExpressionHelper,
+  "string": stringExpressionHelper
+};
 
 export default function interpret(query, data) {
   let filtered = data.filter(entry => {
@@ -7,7 +13,8 @@ export default function interpret(query, data) {
     for(let [key, value] of Object.entries(query)) {
       switch(typeof value) {
         case "object":
-          acc = acc & numericExpressionHelper(value, entry[key]);
+          let expType = typeof value.value;
+          acc = acc & objectExpressionHandlers[expType](value, entry[key]);
           break;
         case "string":
         case "number":

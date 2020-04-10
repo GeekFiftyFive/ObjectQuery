@@ -1,6 +1,12 @@
 const handlers = {
   "<": (left, right) => {
     return left < right;
+  },
+  ">": (left, right) => {
+    return left > right;
+  },
+  "=": (left, right) => {
+    return left == right;
   }
 };
 
