@@ -4,7 +4,7 @@ import {selectSingleEqualsOutcome} from "../__mocks__/expected/selectSingleEqual
 import {flat} from "../__mocks__/input/flat";
 
 describe("Intepreter should return matching json", () => {
-  test("Empty array should be returned on no matches", () => {
+  test("Should return only fields with exact matching fields", () => {
     let output = interpret(selectSingleEquals, flat);
     expect(output).toEqual(selectSingleEqualsOutcome);
   });

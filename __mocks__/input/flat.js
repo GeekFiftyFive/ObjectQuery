@@ -18,5 +18,8 @@ export const flat = [
   {
     "first_name": "John",
     "last_name": "Jones"
+  },
+  {
+    "name": "John Johnson"
   }
 ];
