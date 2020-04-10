@@ -1,4 +1,4 @@
-import {interpret} from "../src/index";
+import * as JSONQuery from "../src/index";
 import {selectSingleEquals} from "../__mocks__/queries/valid/selectSingleEquals";
 import {selectSingleEqualsOutcome} from "../__mocks__/expected/selectSingleEqualsOutcome";
 import {selectSingleNumericExpressionOutcome} from "../__mocks__/expected/selectSingleNumericExpressionOutcome";
@@ -11,22 +11,22 @@ import { likeQueryOutcome } from "../__mocks__/expected/likeQueryOutcome";
 
 describe("Intepreter should return matching json", () => {
   test("Should return only fields with exact matching fields", () => {
-    let output = interpret(selectSingleEquals, flat);
+    let output = JSONQuery.interpret(selectSingleEquals, flat);
     expect(output).toEqual(selectSingleEqualsOutcome);
   });
 
   test("Should match fields with matching numeric expressions", () => {
-    let output = interpret(selectSingleNumericExpression, flat);
+    let output = JSONQuery.interpret(selectSingleNumericExpression, flat);
     expect(output).toEqual(selectSingleNumericExpressionOutcome);
   });
 
   test("Compound queries should return entries that satisfy all expressions", () => {
-    let output = interpret(compoundQuery, flat);
+    let output = JSONQuery.interpret(compoundQuery, flat);
     expect(output).toEqual(compoundQueryOutcome);
   });
 
   test("Like queries should only return matches", () => {
-    let output = interpret(likeQuery, flat);
+    let output = JSONQuery.interpret(likeQuery, flat);
     expect(output).toEqual(likeQueryOutcome);
   });
 });
