@@ -11,6 +11,8 @@ import { likeQueryOutcome } from "../__mocks__/expected/likeQueryOutcome";
 import { nestedQuery } from "../__mocks__/queries/valid/nestedQuery";
 import { nested } from "../__mocks__/input/nested";
 import { nestedQueryOutcome } from "../__mocks__/expected/nestedQueryOutcome";
+import { complexNestedQuery } from "../__mocks__/queries/valid/complexNestedQuery";
+import { complexNestedQueryOutcome } from "../__mocks__/expected/complexNestedQueryOutcome";
 
 describe("Search Flat Files", () => {
   test("Should return only fields with exact matching fields", () => {
@@ -38,5 +40,10 @@ describe("Search Nested Files", () => {
   test("Should return fields exactly matching field in child", () => {
     let output = JSONQuery.interpret(nestedQuery, nested);
     expect(output).toEqual(nestedQueryOutcome);
+  });
+
+  test("Should return fields matching expression", () => {
+    let output = JSONQuery.interpret(complexNestedQuery, nested);
+    expect(output).toEqual(complexNestedQueryOutcome);
   });
 });

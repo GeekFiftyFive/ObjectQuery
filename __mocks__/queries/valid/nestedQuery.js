@@ -1,5 +1,7 @@
 export const nestedQuery = {
   contact: {
-    tel: "0123456789"
+    tel: {
+      home: "48493 75573"
+    }
   }
 }

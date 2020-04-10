@@ -1,4 +1,4 @@
-export const nested = [
+export const complexNestedQueryOutcome = [
   {
     name: "John Johnson",
     age: 30,
@@ -18,17 +18,6 @@ export const nested = [
       tel: {
         work: "01234 684943",
         home: "57393 897843"
-      }
-    }
-  },
-  {
-    name: "Jane Doe",
-    age: 50,
-    contact: {
-      email: "jdoe@rad-email.com",
-      tel: {
-        work: "01435 102349",
-        home: "57439 947393"
       }
     }
   }
