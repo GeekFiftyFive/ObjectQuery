@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "start": "node lib/app.js",
+    "start": "node lib/index.js",
     "test": "jest"
   },
   "repository": {
