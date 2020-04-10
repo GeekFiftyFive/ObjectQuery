@@ -6,6 +6,8 @@ import {selectSingleNumericExpression} from "../__mocks__/queries/valid/selectSi
 import {flat} from "../__mocks__/input/flat";
 import { compoundQuery } from "../__mocks__/queries/valid/compoundQuery";
 import { compoundQueryOutcome } from "../__mocks__/expected/compoundQueryOutcome";
+import { likeQuery } from "../__mocks__/queries/valid/likeQuery";
+import { likeQueryOutcome } from "../__mocks__/expected/likeQueryOutcome";
 
 describe("Intepreter should return matching json", () => {
   test("Should return only fields with exact matching fields", () => {
@@ -21,5 +23,10 @@ describe("Intepreter should return matching json", () => {
   test("Compound queries should return entries that satisfy all expressions", () => {
     let output = interpret(compoundQuery, flat);
     expect(output).toEqual(compoundQueryOutcome);
+  });
+
+  test("Like queries should only return matches", () => {
+    let output = interpret(likeQuery, flat);
+    expect(output).toEqual(likeQueryOutcome);
   });
 });

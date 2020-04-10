@@ -14,7 +14,7 @@ export default function interpret(query, data) {
       switch(typeof value) {
         case "object":
           let expType = typeof value.value;
-          acc = acc & objectExpressionHandlers[expType](value, entry[key]);
+          acc = acc && objectExpressionHandlers[expType](value, entry[key]);
           break;
         case "string":
         case "number":
