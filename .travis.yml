@@ -12,8 +12,10 @@ jobs:
     - stage: dry-run
       if: type IN (pull_request)
       script: npm publish --dry-run
-    - stage: deploy
-      if: NOT type IN (pull_request)
-      script:
-        npm login;
-        npm publish --access=public
+deploy:
+  provider: npm
+  email: "$NPM_EMAIL"
+  api_key: "$NPM_API_TOKEN"
+  skip_cleanup: true
+  on:
+    branch: master
