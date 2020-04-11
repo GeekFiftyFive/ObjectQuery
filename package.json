@@ -1,7 +1,7 @@
 {
-  "name": "jsonquery",
+  "name": "objectquery",
   "version": "0.0.1",
-  "description": "Library to query data from JSON",
+  "description": "Library to query data from an array of JavaScript objects",
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GeekFiftyFive/JSONQuery.git"
+    "url": "git+https://github.com/GeekFiftyFive/ObjectQuery.git"
   },
   "keywords": [
     "JSON",
@@ -19,9 +19,9 @@
   "author": "GeekFiftyFive",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/GeekFiftyFive/JSONQuery/issues"
+    "url": "https://github.com/GeekFiftyFive/ObjectQuery/issues"
   },
-  "homepage": "https://github.com/GeekFiftyFive/JSONQuery#readme",
+  "homepage": "https://github.com/GeekFiftyFive/ObjectQuery#readme",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",

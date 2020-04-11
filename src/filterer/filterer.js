@@ -6,7 +6,7 @@ const objectExpressionHandlers = {
   "string": stringExpressionHelper
 };
 
-export default function interpret(query, data) {
+export default function filter(query, data) {
   let filtered = data.filter(entry => {
     return match(query, entry);
   });

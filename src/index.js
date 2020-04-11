@@ -1,4 +1,3 @@
-import interpret from "./interpreter/interpreter";
+import filter from "./filterer/filterer";
 
-// TODO: Change the API to match the documentation
-export {interpret};
+export {filter};
