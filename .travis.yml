@@ -3,5 +3,11 @@ node_js:
   - "12"
 install:
   - "npm install"
-script:
-  - "npm test"
+jobs:
+  include:
+    - stage: build
+      script: npm run build
+    - stage: test
+      script: npm test
+    - stage: deploy
+      script: npm publish --dry-run
