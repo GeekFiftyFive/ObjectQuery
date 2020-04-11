@@ -2,7 +2,7 @@
 
 ## Introduction
 
-ObjectQuery is a library to run queries against JavaScript objects, with the queries themselves being written as JavaScript objects. The aim of this is to make the syntax fairly intuitive, with as close to a 1:1 maaping with the structure of the original objects as possible.
+ObjectQuery is a library to run queries against arrays of JavaScript objects, with the queries themselves being written as JavaScript objects. The aim of this is to make the syntax fairly intuitive, with as close to a 1:1 mapping with the structure of the original objects as possible.
 
 ## Installing and Running
 
@@ -12,7 +12,7 @@ Install the project by running the following:
 npm install objectquery
 ~~~
 
-The filtering is then called as below:
+You can then filter arrays of Objects as follows:
 
 ~~~
 const ObjectQuery = require("objectquery");
@@ -24,7 +24,7 @@ let output = ObjectQuery.filter({ /* query object */ }, [ /* array of objects to
 
 ### 1. Equality
 
-Checking for equality is fairly intuitive. So I have the following array of objects.
+Checking for equality is fairly intuitive. Say I have the following array of objects:
 
 ~~~
 [
@@ -76,7 +76,7 @@ running `ObjectQuery.filter` as shown above would then yield the following array
 ]
 ~~~
 
-This also works on objects contained within a parent object. Using the previous example, if the objects were structure more like this:
+This also works on objects contained within a parent object. Using the previous example, if the objects were structured more like this:
 
 ~~~
 {
@@ -127,7 +127,7 @@ It's possible to do more than just check for equality against fields on the inpu
 ]
 ~~~
 
-If we wished to filter the libraries with more than 1 dependency, we can use an expression. Filter objects have two fields called `op` and `value`. `op` defines what operation will be used to perform the filtering, and `value` defines the target value. In our example, we want to filter on the `dependencies` field, and we want objects with more than 1 dependency. Hence our query object would look like this:
+If we wished to filter the libraries with more than 1 dependency, we can use an expression. Expressions have two fields called `op` and `value`. `op` defines what operation will be used to perform the filtering, and `value` defines the target value. In our example, we want to filter on the `dependencies` field, and we want objects with more than 1 dependency. Hence, our query object would look like this:
 
 ~~~
 {
@@ -163,13 +163,13 @@ At the time of writing expressions work for both numbers and strings, with the a
 
 **>** Requires that the input value is greater than the `value` field
 **<** Requires that the input value is less than the `value` field
-**=** Requires that the input value matches the `value` field. This is the same as using the above method of checking equivalance. This is just provided to make it easier to generate queries, or for people who may prefer the consistency.
+**=** Requires that the input value matches the `value` field
 
 **String Ops**
 
 **!=** Requires that the input value does not match the `value` field
-**=** Requires that the input value matches the `value` field. This is the same as using the above method of checking equivalance. This is just provided to make it easier to generate queries, or for people who may prefer the consistency.
-**like** Requires that the value contains the `value` field. The `%` sign is used to indicate where in the input string the substring is expected to be found.
+**=** Requires that the input value matches the `value` field. This is the same as using the above method of checking equivalance
+**like** Requires that the `value` field is a substring of the input. The `%` sign is used to indicate where in the input string the substring is expected to be found.
 
 ### 3. Compound Queries
 
@@ -184,3 +184,12 @@ It is possible to filter by more than one field at the same time. To call back t
   }
 }
 ~~~
+
+### Concluding Statement
+
+At the time of writing ObjectQuery is extremely young, and currently missing a lot of features. Below is a list of potential future features in a rough order of priority:
+
+* Boolean logic on expressions
+* Array expressions
+* Improved implementation of the `like` operator
+* More numeric operations
