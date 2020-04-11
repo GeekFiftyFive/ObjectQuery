@@ -13,5 +13,5 @@ jobs:
       if: branch != master
       script: npm publish --dry-run
     - stage: deploy
-      if: branch = master
+      if: NOT type IN (pull_request)
       script: npm publish --access=public
