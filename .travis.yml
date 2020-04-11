@@ -9,5 +9,9 @@ jobs:
       script: npm run build
     - stage: test
       script: npm test
-    - stage: deploy
+    - stage: dry-run
+      if: type IN (pull_request)
       script: npm publish --dry-run
+    - stage: deploy
+      if: NOT type IN (pull_request)
+      script: npm publish --access=public
