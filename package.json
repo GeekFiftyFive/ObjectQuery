@@ -1,5 +1,5 @@
 {
-  "name": "objectquery",
+  "name": "@geekfiftyfive/objectquery",
   "version": "0.0.1",
   "description": "Library to query data from an array of JavaScript objects",
   "main": "lib/index.js",
