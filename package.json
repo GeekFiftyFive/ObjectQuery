@@ -19,7 +19,7 @@
   "author": "GeekFiftyFive",
   "license": "Apache-2.0",
   "files": [
-    "lib/"
+    "/lib"
   ],
   "bugs": {
     "url": "https://github.com/GeekFiftyFive/ObjectQuery/issues"
