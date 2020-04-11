@@ -4,6 +4,8 @@
 
 ObjectQuery is a library to run queries against arrays of JavaScript objects, with the queries themselves being written as JavaScript objects. The aim of this is to make the syntax fairly intuitive, with as close to a 1:1 mapping with the structure of the original objects as possible.
 
+<!-- Commented out until package is deployed to npm
+
 ## Installing and Running
 
 Install the project by running the following:
@@ -18,7 +20,7 @@ You can then filter arrays of Objects as follows:
 const ObjectQuery = require("objectquery");
 
 let output = ObjectQuery.filter({ /* query object */ }, [ /* array of objects to filter */ ]);
-~~~
+~~~ -->
 
 ## Syntax
 
