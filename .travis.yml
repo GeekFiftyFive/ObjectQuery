@@ -9,8 +9,9 @@ jobs:
       script: npm run build
     - stage: test
       script: npm test
-    - stage: deploy
+    - stage: dry-run
       - if: branch != master
-        script: npm publish --dry-run
+      script: npm publish --dry-run
+    - stage: deploy
       - if: branch = master
-        script: npm publish --access=public
+      script: npm publish --access=public
