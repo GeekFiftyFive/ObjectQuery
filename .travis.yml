@@ -10,7 +10,7 @@ jobs:
     - stage: test
       script: npm test
     - stage: dry-run
-      if: branch != master
+      if: type IN (pull_request)
       script: npm publish --dry-run
     - stage: deploy
       if: NOT type IN (pull_request)
