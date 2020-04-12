@@ -15,6 +15,8 @@ import { complexNestedQuery } from "../__mocks__/queries/valid/complexNestedQuer
 import { complexNestedQueryOutcome } from "../__mocks__/expected/complexNestedQueryOutcome";
 import { notExpression } from "../__mocks__/queries/valid/notExpression";
 import { notExpressionOutcome } from "../__mocks__/expected/notExpressionOutcome";
+import { orExpression } from "../__mocks__/queries/valid/orExpression";
+import { orExpressionOutcome } from "../__mocks__/expected/orExpressionOutcome";
 
 describe("Search Flat Files", () => {
   test("Should return only fields with exact matching fields", () => {
@@ -36,11 +38,6 @@ describe("Search Flat Files", () => {
     let output = ObjectQuery.filter(likeQuery, flat);
     expect(output).toEqual(likeQueryOutcome);
   });
-
-  test("'Not' expressions should negate the underlying expression", () => {
-    let output = ObjectQuery.filter(notExpression, flat);
-    expect(output).toEqual(notExpressionOutcome);
-  });
 });
 
 describe("Search Nested Files", () => {
@@ -52,5 +49,17 @@ describe("Search Nested Files", () => {
   test("Should return fields matching expression", () => {
     let output = ObjectQuery.filter(complexNestedQuery, nested);
     expect(output).toEqual(complexNestedQueryOutcome);
+  });
+});
+
+describe("Field Level Boolean Logic Expressions", () => {
+  test("'Not' expressions should negate the underlying expression", () => {
+    let output = ObjectQuery.filter(notExpression, flat);
+    expect(output).toEqual(notExpressionOutcome);
+  });
+
+  test("'Or' expressions should evaluate to true if any sub expressions are true", () => {
+    let output = ObjectQuery.filter(orExpression, flat);
+    expect(output).toEqual(orExpressionOutcome);
   });
 });

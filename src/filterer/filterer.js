@@ -20,7 +20,7 @@ function isExpression(obj) {
 }
 
 function isBooleanLogic(obj) {
-  return obj.hasOwnProperty("expression");
+  return obj.hasOwnProperty("expression") || obj.hasOwnProperty("expressions");
 }
 
 function match(query, entry) {
