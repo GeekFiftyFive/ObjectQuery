@@ -1,9 +1,11 @@
 import numericExpressionHelper from "../helpers/numericExpressionHelper";
 import stringExpressionHelper from "../helpers/stringExpressionHelper";
+import booleanLogHelper from "../helpers/booleanLogicHelper";
 
 const objectExpressionHandlers = {
   "number" : numericExpressionHelper,
-  "string": stringExpressionHelper
+  "string": stringExpressionHelper,
+  "booleanLogic": booleanLogHelper
 };
 
 export default function filter(query, data) {
