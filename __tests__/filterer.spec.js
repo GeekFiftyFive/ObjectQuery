@@ -19,6 +19,8 @@ import { orExpression } from "../__mocks__/queries/valid/orExpression";
 import { orExpressionOutcome } from "../__mocks__/expected/orExpressionOutcome";
 import { objectLevelOr } from "../__mocks__/queries/valid/objectLevelOr";
 import { objectLevelOrOutcome } from "../__mocks__/expected/objectLevelOrOutcome";
+import { topLevelOr } from "../__mocks__/queries/valid/topLevelOr";
+import { topLevelOrOutome } from "../__mocks__/expected/topLevelOrOutcome";
 
 describe("Search Flat Files", () => {
   test("Should return only fields with exact matching fields", () => {
@@ -70,5 +72,10 @@ describe("Object Level Boolean Logic Expressions", () => {
   test("'Or' expressions should evaluate to true if any sub expressions are true", () => {
     let output = ObjectQuery.filter(objectLevelOr, nested);
     expect(output).toEqual(objectLevelOrOutcome);
+  });
+
+  test("Top level 'Or' expressions should evaluate to true if any sub expressions are true", () => {
+    let output = ObjectQuery.filter(topLevelOr, flat);
+    expect(output).toEqual(topLevelOrOutome);
   });
 });
