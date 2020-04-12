@@ -1,6 +1,7 @@
 import numericExpressionHelper from "../helpers/numericExpressionHelper";
 import stringExpressionHelper from "../helpers/stringExpressionHelper";
 import booleanLogicHelper from "../helpers/booleanLogicHelper";
+import isExpression from "../helpers/isExpressionHelper";
 
 const objectExpressionHandlers = {
   "number" : numericExpressionHelper,
@@ -14,10 +15,6 @@ export default function filter(query, data) {
 
   return filtered;
 };
-
-function isExpression(obj) {
-  return obj.op != undefined && obj.value != undefined;
-}
 
 function isBooleanLogic(obj) {
   return obj.hasOwnProperty("expression") || obj.hasOwnProperty("expressions");
