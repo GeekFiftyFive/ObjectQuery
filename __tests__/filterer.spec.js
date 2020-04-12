@@ -13,6 +13,8 @@ import { nested } from "../__mocks__/input/nested";
 import { nestedQueryOutcome } from "../__mocks__/expected/nestedQueryOutcome";
 import { complexNestedQuery } from "../__mocks__/queries/valid/complexNestedQuery";
 import { complexNestedQueryOutcome } from "../__mocks__/expected/complexNestedQueryOutcome";
+import { notExpression } from "../__mocks__/queries/valid/notExpression";
+import { notExpressionOutcome } from "../__mocks__/expected/notExpressionOutcome";
 
 describe("Search Flat Files", () => {
   test("Should return only fields with exact matching fields", () => {
@@ -33,6 +35,11 @@ describe("Search Flat Files", () => {
   test("Like queries should only return matches", () => {
     let output = ObjectQuery.filter(likeQuery, flat);
     expect(output).toEqual(likeQueryOutcome);
+  });
+
+  test("'Not' expressions should negate the underlying expression", () => {
+    let output = ObjectQuery.filter(notExpression, flat);
+    expect(output).toEqual(notExpressionOutcome);
   });
 });
 
