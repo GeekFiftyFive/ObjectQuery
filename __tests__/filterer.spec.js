@@ -13,6 +13,18 @@ import { nested } from "../__mocks__/input/nested";
 import { nestedQueryOutcome } from "../__mocks__/expected/nestedQueryOutcome";
 import { complexNestedQuery } from "../__mocks__/queries/valid/complexNestedQuery";
 import { complexNestedQueryOutcome } from "../__mocks__/expected/complexNestedQueryOutcome";
+import { notExpression } from "../__mocks__/queries/valid/notExpression";
+import { notExpressionOutcome } from "../__mocks__/expected/notExpressionOutcome";
+import { orExpression } from "../__mocks__/queries/valid/orExpression";
+import { orExpressionOutcome } from "../__mocks__/expected/orExpressionOutcome";
+import { objectLevelOr } from "../__mocks__/queries/valid/objectLevelOr";
+import { objectLevelOrOutcome } from "../__mocks__/expected/objectLevelOrOutcome";
+import { topLevelOr } from "../__mocks__/queries/valid/topLevelOr";
+import { topLevelOrOutome } from "../__mocks__/expected/topLevelOrOutcome";
+import { topLevelNot } from "../__mocks__/queries/valid/topLevelNot";
+import { topLevelNotOutcome } from "../__mocks__/expected/topLevelNotOutcome";
+import { objectLevelAnd } from "../__mocks__/queries/valid/objectLevelAnd";
+import { objectLevelAndOutcome } from "../__mocks__/expected/objectLevelAndOutcome";
 
 describe("Search Flat Files", () => {
   test("Should return only fields with exact matching fields", () => {
@@ -45,5 +57,39 @@ describe("Search Nested Files", () => {
   test("Should return fields matching expression", () => {
     let output = ObjectQuery.filter(complexNestedQuery, nested);
     expect(output).toEqual(complexNestedQueryOutcome);
+  });
+});
+
+describe("Field Level Boolean Logic Expressions", () => {
+  test("'Not' expressions should negate the underlying expression", () => {
+    let output = ObjectQuery.filter(notExpression, flat);
+    expect(output).toEqual(notExpressionOutcome);
+  });
+
+  test("'Or' expressions should evaluate to true if any sub expressions are true", () => {
+    let output = ObjectQuery.filter(orExpression, flat);
+    expect(output).toEqual(orExpressionOutcome);
+  });
+});
+
+describe("Object Level Boolean Logic Expressions", () => {
+  test("'Or' expressions should evaluate to true if any sub expressions are true", () => {
+    let output = ObjectQuery.filter(objectLevelOr, nested);
+    expect(output).toEqual(objectLevelOrOutcome);
+  });
+
+  test("'And' expressions should evaluate to true only if all sub expressions are true", () => {
+    let output = ObjectQuery.filter(objectLevelAnd, nested);
+    expect(output).toEqual(objectLevelAndOutcome);
+  });
+
+  test("Top level 'Or' expressions should evaluate to true if any sub expressions are true", () => {
+    let output = ObjectQuery.filter(topLevelOr, flat);
+    expect(output).toEqual(topLevelOrOutome);
+  });
+
+  test("Top level 'Not' expressions should evauluate to true if the sub expression is false", () => {
+    let output = ObjectQuery.filter(topLevelNot, flat);
+    expect(output).toEqual(topLevelNotOutcome);
   });
 });
