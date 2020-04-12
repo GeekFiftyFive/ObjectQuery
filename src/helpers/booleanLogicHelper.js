@@ -14,6 +14,18 @@ const handlers = {
     });
 
     return matched;
+  },
+
+  "and": (key, expression, value, match) => {
+    let matched = true;
+
+    expression.expressions.forEach(expr => {
+      let query = getQuery(key, expr);
+      
+      matched = matched && match(query, value);
+    });
+
+    return matched;
   }
 }
 
