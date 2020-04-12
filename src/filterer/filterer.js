@@ -22,6 +22,11 @@ function isBooleanLogic(obj) {
 
 function match(query, entry) {
   let acc = true;
+
+  if(isBooleanLogic(query)) {
+    return booleanLogicHelper(null, query, entry, match);
+  }
+
   for (let [key, value] of Object.entries(query)) {
     if(isBooleanLogic(value)) {
       acc = acc && booleanLogicHelper(key, value, entry, match);

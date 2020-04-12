@@ -5,7 +5,9 @@ export const topLevelOr = {
       first_name: {
         op: "=",
         value: "John"
-      },
+      }
+    },
+    {
       name: {
         op: "like",
         value: "John%"
