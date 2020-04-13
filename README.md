@@ -17,7 +17,7 @@ npm install @geekfiftyfive/objectquery
 You can then filter arrays of Objects as follows:
 
 ~~~
-const ObjectQuery = require("objectquery");
+const ObjectQuery = require("@geekfiftyfive/objectquery");
 
 let output = ObjectQuery.filter({ /* query object */ }, [ /* array of objects to filter */ ]);
 ~~~
@@ -165,20 +165,25 @@ Expressions work for arrays, numbers and strings, with the available `op` values
 
 **Number Ops**
 
-**>** Requires that the input value is greater than the `value` field
-**<** Requires that the input value is less than the `value` field
-**=** Requires that the input value matches the `value` field
+* **>** Requires that the input value is greater than the `value` field
+
+* **<** Requires that the input value is less than the `value` field
+
+* **=** Requires that the input value matches the `value` field
 
 **String Ops**
 
-**!=** Requires that the input value does not match the `value` field
-**=** Requires that the input value matches the `value` field. This is the same as using the above method of checking equivalance
-**like** Requires that the `value` field is a substring of the input. The `%` sign is used to indicate where in the input string the substring is expected to be found.
+* **!=** Requires that the input value does not match the `value` field
+
+* **=** Requires that the input value matches the `value` field. This is the same as using the above method of checking equivalance
+
+* **like** Requires that the `value` field is a substring of the input. The `%` sign is used to indicate where in the input string the substring is expected to be found.
 
 **Array Ops**
 
-**contains** Requires that an input value contain all elements in the `value` field
-**containsAny** Requires that an input value contains 1 or more elements in the `value` field
+* **contains** Requires that an input value contain all elements in the `value` field
+
+* **containsAny** Requires that an input value contains 1 or more elements in the `value` field
 
 ### 3. Compound Queries
 
@@ -220,9 +225,11 @@ field_name: {
 }
 ~~~
 
-**not** Requires that the sub expression evaluates to **false**
-**and** requires that **all** sub expressions evaluate to **true**
-**or** requires that **at least 1** sub expression evaluates to **true**
+* **not** Requires that the sub expression evaluates to **false**
+
+* **and** requires that **all** sub expressions evaluate to **true**
+
+* **or** requires that **at least 1** sub expression evaluates to **true**
 
 As an example, say I wanted to include all objects that have a `first_name` field with value 'John' or 'Fred'. I would represent it like this:
 
