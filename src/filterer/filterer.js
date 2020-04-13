@@ -2,10 +2,20 @@ import numericExpressionHelper from "../helpers/numericExpressionHelper";
 import stringExpressionHelper from "../helpers/stringExpressionHelper";
 import booleanLogicHelper from "../helpers/booleanLogicHelper";
 import isExpression from "../helpers/isExpressionHelper";
+import isArrayEqual from "../helpers/arrayEqualityHelper";
+import arrayExpressionHelper from "../helpers/arrayExpressionHelper";
 
 const objectExpressionHandlers = {
   "number" : numericExpressionHelper,
   "string": stringExpressionHelper,
+  "object": (expression, value) => {
+    if(Array.isArray(expression.value)) {
+      return arrayExpressionHelper(expression, value);
+    }
+
+    console.warn("Reached path that should be unreachable! Expression was:");
+    console.warn(expression);
+  }
 };
 
 export default function filter(query, data) {
@@ -36,6 +46,8 @@ function match(query, entry) {
           if(isExpression(value)) {
             let expType = typeof value.value;
             acc = acc && objectExpressionHandlers[expType](value, entry[key]);
+          } else if(Array.isArray(value)) {
+            acc = acc && isArrayEqual(value, entry[key]);
           } else {
             return match(value, entry[key]);
           }
