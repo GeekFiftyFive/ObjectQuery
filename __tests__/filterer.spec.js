@@ -25,6 +25,9 @@ import { topLevelNot } from "../__mocks__/queries/valid/topLevelNot";
 import { topLevelNotOutcome } from "../__mocks__/expected/topLevelNotOutcome";
 import { objectLevelAnd } from "../__mocks__/queries/valid/objectLevelAnd";
 import { objectLevelAndOutcome } from "../__mocks__/expected/objectLevelAndOutcome";
+import { arrayQuery } from "../__mocks__/queries/valid/arrayQuery";
+import { array } from "../__mocks__/input/array";
+import { arrayQueryOutcome } from "../__mocks__/expected/arrayQueryOutcome";
 
 describe("Search Flat Files", () => {
   test("Should return only fields with exact matching fields", () => {
@@ -91,5 +94,12 @@ describe("Object Level Boolean Logic Expressions", () => {
   test("Top level 'Not' expressions should evauluate to true if the sub expression is false", () => {
     let output = ObjectQuery.filter(topLevelNot, flat);
     expect(output).toEqual(topLevelNotOutcome);
+  });
+});
+
+describe("Array Expressions", () => {
+  test("Arrays should match on equality regardless of order", () => {
+    let output = ObjectQuery.filter(arrayQuery, array);
+    expect(output).toEqual(arrayQueryOutcome);
   });
 });
