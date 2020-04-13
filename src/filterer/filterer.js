@@ -3,10 +3,19 @@ import stringExpressionHelper from "../helpers/stringExpressionHelper";
 import booleanLogicHelper from "../helpers/booleanLogicHelper";
 import isExpression from "../helpers/isExpressionHelper";
 import isArrayEqual from "../helpers/arrayEqualityHelper";
+import arrayExpressionHelper from "../helpers/arrayExpressionHelper";
 
 const objectExpressionHandlers = {
   "number" : numericExpressionHelper,
   "string": stringExpressionHelper,
+  "object": (expression, value) => {
+    if(Array.isArray(expression.value)) {
+      return arrayExpressionHelper(expression, value);
+    }
+
+    console.warn("Reached path that should be unreachable! Expression was:");
+    console.warn(expression);
+  }
 };
 
 export default function filter(query, data) {
