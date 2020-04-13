@@ -1,11 +1,18 @@
 export function deepSortArrays(obj) {
-  for(let [key, value] in obj) {
-    if(typeof value == "object") {
-      if(Array.isArray(value)) {
+  return obj.map(deepSortSubArrays);
+}
+
+function deepSortSubArrays(obj) {
+  for (let [key, value] of Object.entries(obj)) {
+    if (typeof value == "object") {
+      if (Array.isArray(value)) {
         obj[key] = value.sort();
-      } else {
+      }
+      else {
         obj[key] = deepSortArrays(value);
       }
     }
   }
+
+  return obj;
 }
