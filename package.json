@@ -1,6 +1,6 @@
 {
   "name": "@geekfiftyfive/objectquery",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Library to query data from an array of JavaScript objects.",
   "main": "lib/index.js",
   "scripts": {
