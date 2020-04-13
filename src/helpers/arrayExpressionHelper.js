@@ -7,6 +7,15 @@ const handlers = {
     });
 
     return acc;
+  },
+  containsAny: (haystack, needles) => {
+    let acc = false;
+
+    needles.forEach(needle => {
+      acc = acc || haystack.includes(needle);
+    });
+
+    return acc;
   }
 };
 

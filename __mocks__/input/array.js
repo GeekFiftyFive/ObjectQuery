@@ -14,5 +14,9 @@ export const array = [
   {
     room: "Ensuite",
     furniture: ["cabinet", "sink", "toilet"]
+  },
+  {
+    room: "Bedroom",
+    furniture: ["bed", "wardrobe"]
   }
 ]

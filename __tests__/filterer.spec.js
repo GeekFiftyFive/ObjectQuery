@@ -31,6 +31,8 @@ import { arrayQueryOutcome } from "../__mocks__/expected/arrayQueryOutcome";
 import { deepSortArrays } from "./testHelpers/arrayHelper";
 import { arrayContainsQuery } from "../__mocks__/queries/valid/arrayContainsQuery";
 import { arrayContainsQueryOutcome } from "../__mocks__/expected/arrayContainsQueryOutcome";
+import { arrayContainsAnyQuery } from "../__mocks__/queries/valid/arrayContainsAnyQuery";
+import { arrayContainsAnyQueryOutcome } from "../__mocks__/expected/arrayContainsAnyQueryOutcome";
 
 describe("Search Flat Files", () => {
   test("Should return only fields with exact matching fields", () => {
@@ -109,5 +111,10 @@ describe("Array Expressions", () => {
   test("'contain' expressions should match on any array that contains all items at any level", () => {
     let output = ObjectQuery.filter(arrayContainsQuery, array);
     expect(deepSortArrays(output)).toEqual(deepSortArrays(arrayContainsQueryOutcome));
+  });
+
+  test("'containsAny' expressions should match on any array that contains any item", () => {
+    let output = ObjectQuery.filter(arrayContainsAnyQuery, array);
+    expect(deepSortArrays(output)).toEqual(deepSortArrays(arrayContainsAnyQueryOutcome));
   });
 });
