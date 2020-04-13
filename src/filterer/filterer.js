@@ -2,6 +2,7 @@ import numericExpressionHelper from "../helpers/numericExpressionHelper";
 import stringExpressionHelper from "../helpers/stringExpressionHelper";
 import booleanLogicHelper from "../helpers/booleanLogicHelper";
 import isExpression from "../helpers/isExpressionHelper";
+import isArrayEqual from "../helpers/arrayEqualityHelper";
 
 const objectExpressionHandlers = {
   "number" : numericExpressionHelper,
@@ -36,6 +37,8 @@ function match(query, entry) {
           if(isExpression(value)) {
             let expType = typeof value.value;
             acc = acc && objectExpressionHandlers[expType](value, entry[key]);
+          } else if(Array.isArray(value)) {
+            acc = acc && isArrayEqual(value, entry[key]);
           } else {
             return match(value, entry[key]);
           }
