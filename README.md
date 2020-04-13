@@ -102,6 +102,8 @@ and I wanted to filter objects whose LTS version was `1.0.0` then the query obje
 }
 ~~~
 
+A potential 'gotcha' with equality is that arrays are considered equal regardless of the order their elements appear in.
+
 ### 2. Expressions
 
 It's possible to do more than just check for equality against fields on the input objects. It's also possible to use expressions to do more complex filtering. To go back to our previous example:
@@ -159,7 +161,7 @@ The resulting array would look like this:
 ]
 ~~~
 
-At the time of writing expressions work for both numbers and strings, with the available `op` values documented below:
+Expressions work for arrays, numbers and strings, with the available `op` values documented below:
 
 **Number Ops**
 
@@ -172,6 +174,11 @@ At the time of writing expressions work for both numbers and strings, with the a
 **!=** Requires that the input value does not match the `value` field
 **=** Requires that the input value matches the `value` field. This is the same as using the above method of checking equivalance
 **like** Requires that the `value` field is a substring of the input. The `%` sign is used to indicate where in the input string the substring is expected to be found.
+
+**Array Ops**
+
+**contains** Requires that an input value contain all elements in the `value` field
+**containsAny** Requires that an input value contains 1 or more elements in the `value` field
 
 ### 3. Compound Queries
 
@@ -187,11 +194,58 @@ It is possible to filter by more than one field at the same time. To call back t
 }
 ~~~
 
+### 4. Boolean Logic
+
+It's possible to use boolean logic on expressions. There or currently 3 logical operations, `not`, `or` and `and`.
+
+`not` takes 1 sub-expression, whilst `or` and `and` can take any number of sub expressions. The boolean logic syntax for an operation that takes 1 sub expression is as follows:
+
+~~~
+field_name: {
+  op: " /* string representing operation */ ",
+  expression: {
+    /* object representing an expression */
+  }
+}
+~~~
+
+The boolean logic syntax for an operation that takes multiple sub expressions is as follows:
+
+~~~
+field_name: {
+  op: " /* string representing operation */ ",
+  expressions: [
+    /* array of objects representing expressions */
+  ]
+}
+~~~
+
+**not** Requires that the sub expression evaluates to **false**
+**and** requires that **all** sub expressions evaluate to **true**
+**or** requires that **at least 1** sub expression evaluates to **true**
+
+As an example, say I wanted to include all objects that have a `first_name` field with value 'John' or 'Fred'. I would represent it like this:
+
+~~~
+first_name: {
+    op: "or",
+    expressions: [
+      {
+        op: "=",
+        value: "John"
+      },
+      {
+        op: "=",
+        value: "Fred"
+      }
+    ]
+  }
+~~~
+
 ### Concluding Statement
 
 At the time of writing ObjectQuery is extremely young, and currently missing a lot of features. Below is a list of potential future features in a rough order of priority:
 
-* Boolean logic on expressions
-* Array expressions
 * Improved implementation of the `like` operator
+* Ability to escape field names
 * More numeric operations
