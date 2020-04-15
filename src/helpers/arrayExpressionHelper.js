@@ -1,3 +1,5 @@
+import isArrayEqual from "./arrayEqualityHelper";
+
 const handlers = {
   contains: (haystack, needles) => {
     let acc = true;
@@ -16,6 +18,9 @@ const handlers = {
     });
 
     return acc;
+  },
+  "=": (left, right) => {
+    return isArrayEqual(left, right);
   }
 };
 
