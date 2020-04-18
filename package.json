@@ -32,14 +32,16 @@
     "@babel/preset-env": "^7.9.0",
     "babel-jest": "^25.2.3",
     "babel-polyfill": "^6.26.0",
+    "codecov": "^3.6.5",
     "jest": "^25.2.3"
   },
   "dependencies": {
     "@babel/runtime": "^7.9.2"
   },
   "jest": {
-    "testPathIgnorePatterns" : [
-      "<rootDir>/__tests__/testHelpers/" 
-    ]
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/testHelpers/"
+    ],
+    "collectCoverage": true
   }
 }

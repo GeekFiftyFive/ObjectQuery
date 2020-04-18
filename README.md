@@ -1,6 +1,7 @@
 <img src="https://repository-images.githubusercontent.com/254569283/f914c480-7be0-11ea-8cb6-947b77526249" width=250px alt="ObjectQuery Logo"/>
 <br />
 <img src="https://travis-ci.org/GeekFiftyFive/ObjectQuery.svg?branch=master" alt="Build Status">
+<img src="https://img.shields.io/npm/l/@geekfiftyfive/objectquery" alt="License">
 
 ## Introduction
 
