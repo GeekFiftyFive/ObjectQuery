@@ -172,6 +172,16 @@ Expressions work for arrays, numbers and strings, with the available `op` values
 
 * **=** Requires that the input value matches the `value` field
 
+* **<=** Requires that the input value is less than or equal to the `value` field
+
+* **>=** Requires that the input value is greater than or equal to the `value` field
+
+* **!=** Requires that the input value in not equal to the `value` field
+
+* **divisibleBy** Requires that the input value be divisible by the `value` field
+
+* **isIntegral** Requires that the input value is a whole number if `value` is `true`, or requires that it is not if `value` is `false`
+
 **String Ops**
 
 * **!=** Requires that the input value does not match the `value` field
@@ -185,6 +195,8 @@ Expressions work for arrays, numbers and strings, with the available `op` values
 * **contains** Requires that an input value contain all elements in the `value` field
 
 * **containsAny** Requires that an input value contains 1 or more elements in the `value` field
+
+* **=** Requires that an input value contains all of the elements in the `value` field in any order
 
 ### 3. Compound Queries
 
@@ -249,6 +261,16 @@ first_name: {
     ]
   }
 ~~~
+
+### 5. Putting Field Names In Quotes
+
+Putting quotes around a field name in the query as below:
+
+~~~
+"\"first_name\"": "John"
+~~~
+
+This is usefull if your input data use `op` or `value` as field names.
 
 ### Concluding Statement
 
