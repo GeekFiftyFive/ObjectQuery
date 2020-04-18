@@ -42,6 +42,9 @@
     "testPathIgnorePatterns": [
       "<rootDir>/__tests__/testHelpers/"
     ],
-    "collectCoverage": true
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/{!(ignore-me),}.js"
+    ]
   }
 }

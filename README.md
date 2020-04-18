@@ -2,6 +2,7 @@
 <br />
 <img src="https://travis-ci.org/GeekFiftyFive/ObjectQuery.svg?branch=master" alt="Build Status">
 <img src="https://img.shields.io/npm/l/@geekfiftyfive/objectquery" alt="License">
+<img src="https://img.shields.io/codecov/c/github/GeekFiftyFive/ObjectQuery" alt="Code Coverage">
 
 ## Introduction
 
