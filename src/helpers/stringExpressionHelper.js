@@ -18,8 +18,6 @@ const handlers = {
       //FIXME: Handle like expressions properly
       throw new Error("Using like operations in this manner is not currently implemented");
     }
-
-    return false;
   }
 };
 
