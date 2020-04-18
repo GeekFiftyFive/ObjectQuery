@@ -16,6 +16,12 @@ const handlers = {
   },
   "!=": (left, right) => {
     return left != right;
+  },
+  divisibleBy: (dividend, divisor) => {
+    return !(dividend % divisor);
+  },
+  isIntegral: (value, expectation) => {
+    return Number.isInteger(value) === expectation;
   }
 };
 
