@@ -91,3 +91,10 @@ describe("Array Expressions", () => {
     expect(deepSortArrays(output)).toEqual(deepSortArrays(imports.arrayQueryOutcome));
   });
 });
+
+describe("Escaped Field Names", () => {
+  test("Should be able to check for equivalence on fields called 'op' and 'value'", () => {
+    let output = ObjectQuery.filter(imports.specialFieldNamesQuery, imports.specialFieldNames);
+    expect(output).toEqual(imports.specialFieldNamesQueryOutcome);
+  });
+});

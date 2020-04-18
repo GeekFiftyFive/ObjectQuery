@@ -4,6 +4,7 @@ import booleanLogicHelper from "../helpers/booleanLogicHelper";
 import isExpression from "../helpers/isExpressionHelper";
 import isArrayEqual from "../helpers/arrayEqualityHelper";
 import arrayExpressionHelper from "../helpers/arrayExpressionHelper";
+import getKey from "../helpers/getKeyHelper";
 
 const objectExpressionHandlers = {
   "number" : numericExpressionHelper,
@@ -38,6 +39,7 @@ function match(query, entry) {
   }
 
   for (let [key, value] of Object.entries(query)) {
+    key = getKey(key);
     if(isBooleanLogic(value)) {
       acc = acc && booleanLogicHelper(key, value, entry, match);
     } else {

@@ -32,6 +32,9 @@ import { arrayContainsQueryOutcome } from "../../__mocks__/expected/arrayContain
 import { arrayContainsAnyQuery } from "../../__mocks__/queries/valid/arrayContainsAnyQuery";
 import { arrayContainsAnyQueryOutcome } from "../../__mocks__/expected/arrayContainsAnyQueryOutcome";
 import { arrayEqualsQuery } from "../../__mocks__/queries/valid/arrayEqualsQuery";
+import { specialFieldNames } from "../../__mocks__/input/specialFieldNames";
+import { specialFieldNamesQuery } from "../../__mocks__/queries/valid/specialFieldNamesQuery";
+import { specialFieldNamesQueryOutcome } from "../../__mocks__/expected/specialFieldNamesQueryOutcome";
 
 export {
   selectSingleEquals,
@@ -67,5 +70,8 @@ export {
   arrayContainsQueryOutcome,
   arrayContainsAnyQuery,
   arrayContainsAnyQueryOutcome,
-  arrayEqualsQuery
+  arrayEqualsQuery,
+  specialFieldNames,
+  specialFieldNamesQuery,
+  specialFieldNamesQueryOutcome
 };
