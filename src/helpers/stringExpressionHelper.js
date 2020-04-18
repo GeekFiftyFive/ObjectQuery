@@ -7,7 +7,7 @@ const handlers = {
   },
   "like": (value, expression) => {
     if(!value) return false;
-    const expr = expression.split('%').join('.+');
+    const expr = expression.replace(/[-[\]{}()*+?.,\\^$|#\\]/g, '\\$&').split('%').join('.+');
     const regex = new RegExp(expr);
 
     return value.match(regex) ? true : false;

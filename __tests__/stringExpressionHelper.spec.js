@@ -35,4 +35,10 @@ describe("String Like Operator", () => {
     expect(stringExpressionHelper(expression, "Kevin John Franklin Smith")).toBeTruthy();
     expect(stringExpressionHelper(expression, "Kevin JohnSmith")).toBeFalsy();
   });
+
+  test("Should not be able to inject regex", () => {
+    const expression = {op: "like", value: ".+"};
+
+    expect(stringExpressionHelper(expression, "John Smith")).toBeFalsy();
+  });
 });
