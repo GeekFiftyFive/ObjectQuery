@@ -271,11 +271,3 @@ Putting quotes around a field name in the query as below:
 ~~~
 
 This is usefull if your input data use `op` or `value` as field names.
-
-### Concluding Statement
-
-At the time of writing ObjectQuery is extremely young, and currently missing a lot of features. Below is a list of potential future features in a rough order of priority:
-
-* Improved implementation of the `like` operator
-* Ability to escape field names
-* More numeric operations
